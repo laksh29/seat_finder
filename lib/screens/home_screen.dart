@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
             onPressed: () => Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const SeatingLayout(),
+                  builder: (context) => const SeatingLayoutFul(),
                 ),
                 (route) => false),
             child: const Text("Lets Start ->"),

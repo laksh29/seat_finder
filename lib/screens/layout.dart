@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:train_seats/constants/color_constants.dart';
-import 'package:train_seats/constants/sized_box.dart';
+import 'package:train_seats/constants/common_constants.dart';
 import 'package:train_seats/providers/providers.dart';
 import 'package:train_seats/widgets/compartment_layout.dart';
 
@@ -24,7 +24,7 @@ class _SeatingLayoutFulState extends ConsumerState<SeatingLayoutFul> {
 
   void scrollToIndex() {
     final int toJump = ref.watch(searchSeatProvider);
-    var index = [1, 2, 3, 4, 5, 6, 7, 8].contains(toJump)
+    var index = [0, 1, 2, 3, 4, 5, 6, 7, 8].contains(toJump)
         ? 0
         : [9, 10, 11, 12, 13, 14, 15, 16].contains(toJump)
             ? 1
@@ -69,13 +69,16 @@ class _SeatingLayoutFulState extends ConsumerState<SeatingLayoutFul> {
                     controller: textController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            ref.read(searchSeatProvider.notifier).state = 0;
-                            textController.clear();
-                          },
-                          icon: const Icon(Icons.close),
-                        ),
+                        suffixIcon: ref.watch(searchSeatProvider) != 0
+                            ? IconButton(
+                                onPressed: () {
+                                  ref.read(searchSeatProvider.notifier).state =
+                                      0;
+                                  textController.clear();
+                                },
+                                icon: const Icon(Icons.close),
+                              )
+                            : null,
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide: const BorderSide(
@@ -89,17 +92,29 @@ class _SeatingLayoutFulState extends ConsumerState<SeatingLayoutFul> {
                 ElevatedButton(
                   style: buttonStyle(),
                   onPressed: () {
-                    ref.read(searchSeatProvider.notifier).update(
-                          (state) => int.parse(textController.text),
-                        );
-                    scrollToIndex();
+                    final searchInt = int.parse(textController.text);
+                    if (searchInt <= 48 && searchInt > 0) {
+                      //? updating the provider to search for the seat
+                      ref.read(searchSeatProvider.notifier).update(
+                            (state) => searchInt,
+                          );
+
+                      //? call scrollToIndex method
+                      scrollToIndex();
+                    } else {
+                      //? show snackBar
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(displaySnackbar(
+                        "Please Enter a Seat Number that Exists!",
+                      ));
+                    }
                   },
                   child: const Text("Find"),
                 )
               ],
             ),
             buildHeight(30),
-
+            //* Example Seat Types - for reference
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

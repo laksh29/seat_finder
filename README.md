@@ -22,9 +22,9 @@ Each seat has been denoted differently with seat numbers and seat type printed o
 2. Have Git installed on your local machine. [Get started with Git - Documentation](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 3. Clone the repository on your local machine using the following command.
 
-'''
+```
 git clone https://github.com/laksh29/seat_finder.git
-'''
+```
 
 4. Open the repository on your Visual Studio Code (VS Code)
 5. Open the terminal in VS Code and run the following command to load all the packages 

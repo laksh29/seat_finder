@@ -17,39 +17,31 @@ class SeatWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     const double seatHeight = 60;
 
-    double seatWidth = seat.index % 8 == 4 || seat.index % 8 == 0 ? 80 : 60;
+    double seatWidth = 60;
+
+    final seatsList = ref.watch(seatsSelectedProvider);
+
+    final searchedSeat = ref.watch(searchSeatProvider);
 
     return GestureDetector(
-      //? State Provider
+      //? StateNotifier Provider
       onTap: () {
-        if (!ref.watch(selectedSeats).contains(seat.index)) {
-          ref.read(selectedSeats.notifier).update((state) => [
-                ...state,
-                seat.index,
-              ]);
+        if (!ref.watch(seatsSelectedProvider).contains(seat.index)) {
+          ref.read(seatsSelectedProvider.notifier).selectSeats(seat);
         } else {
-          ref.read(selectedSeats.notifier).update((state) => [
-                for (var index in state)
-                  if (index != seat.index) index,
-              ]);
+          ref.read(seatsSelectedProvider.notifier).unselectSeats(seat);
         }
       },
-      //? StateNotifier Provider
-      // onTap: () {
-      //   if (!ref.watch(seatsSelectedProvider).contains(seat.index)) {
-      //     ref.read(seatsSelectedProvider.notifier).selectSeats(seat);
-      //   } else {
-      //     ref.read(seatsSelectedProvider.notifier).unselectSeats(seat);
-      //   }
-      // },
 
       child: Container(
           height: seatHeight,
           width: seatWidth,
           decoration: BoxDecoration(
-            color: ref.read(selectedSeats).contains(seat.index)
-                ? ColorConstants.dark
-                : ColorConstants.light,
+            color: seatsList.contains(seat.index)
+                ? ColorConstants.selected
+                : searchedSeat == seat.index
+                    ? ColorConstants.searched
+                    : ColorConstants.light,
             borderRadius: BorderRadius.circular(10),
           ),
           child: TextBuilder(seat: seat)),
@@ -71,7 +63,7 @@ class TextBuilder extends ConsumerWidget {
         seat.index % 8 == 3 ||
         seat.index % 8 == 4;
 
-    List seatsSelected = ref.watch(selectedSeats);
+    List seatsSelected = ref.watch(seatsSelectedProvider);
 
     return isUp
         ? Column(
@@ -79,35 +71,35 @@ class TextBuilder extends ConsumerWidget {
             children: [
               Text(
                 seat.index.toString(),
-                style: textColor(
+                style: textStyling(
                   seatsSelected,
                   null,
                 ),
               ),
               Text(
                 seat.seatType.name.toUpperCase(),
-                style: textColor(
+                style: textStyling(
                   seatsSelected,
-                  11,
+                  9,
                 ),
               ),
-              buildHeight(10),
+              buildHeight(5),
             ],
           )
         : Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              buildHeight(10),
+              buildHeight(5),
               Text(
                 seat.seatType.name.toUpperCase(),
-                style: textColor(
+                style: textStyling(
                   seatsSelected,
-                  11,
+                  9,
                 ),
               ),
               Text(
                 seat.index.toString(),
-                style: textColor(
+                style: textStyling(
                   seatsSelected,
                   null,
                 ),
@@ -116,7 +108,7 @@ class TextBuilder extends ConsumerWidget {
           );
   }
 
-  TextStyle textColor(
+  TextStyle textStyling(
     List seatsSelected,
     double? fontSize,
   ) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:train_seats/constants/color_constants.dart';
-import 'package:train_seats/constants/sized_box.dart';
+import 'package:train_seats/constants/common_constants.dart';
 import 'package:train_seats/providers/providers.dart';
 import 'package:train_seats/utils/seat.dart';
 

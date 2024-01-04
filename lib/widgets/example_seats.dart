@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/sized_box.dart';
+import '../constants/common_constants.dart';
 import 'clippers.dart';
 
 class ExampleSeats extends StatelessWidget {

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'package:train_seats/constants/color_constants.dart';
 import 'package:train_seats/constants/sized_box.dart';
 import 'package:train_seats/providers/providers.dart';
 import 'package:train_seats/widgets/compartment_layout.dart';
 
 import '../utils/button_style.dart';
+import '../widgets/example_seats.dart';
 
 class SeatingLayoutFul extends ConsumerStatefulWidget {
   const SeatingLayoutFul({super.key});
@@ -61,7 +63,7 @@ class _SeatingLayoutFulState extends ConsumerState<SeatingLayoutFul> {
           children: [
             Row(
               children: [
-                // textField to find a seat
+                //* textField to find a seat
                 Expanded(
                   child: TextFormField(
                     controller: textController,
@@ -83,7 +85,7 @@ class _SeatingLayoutFulState extends ConsumerState<SeatingLayoutFul> {
                   ),
                 ),
                 buildWidth(20),
-                // find button
+                //* find button
                 ElevatedButton(
                   style: buttonStyle(),
                   onPressed: () {
@@ -97,7 +99,32 @@ class _SeatingLayoutFulState extends ConsumerState<SeatingLayoutFul> {
               ],
             ),
             buildHeight(30),
-            // list view of seats
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ExampleSeats(
+                  text: "Normal Seats",
+                  color: ColorConstants.dark,
+                  clipped: true,
+                ),
+                ExampleSeats(
+                  text: "Emergency Seats",
+                  color: ColorConstants.emergency,
+                  clipped: true,
+                ),
+                ExampleSeats(
+                  text: "Selected Seats",
+                  color: ColorConstants.selected,
+                ),
+                ExampleSeats(
+                  text: "Searched Seats",
+                  color: ColorConstants.searched,
+                ),
+              ],
+            ),
+            buildHeight(30),
+            //* list view of seats
             Expanded(
               child: ScrollablePositionedList.builder(
                   itemScrollController: scrollController,

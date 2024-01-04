@@ -40,6 +40,6 @@ flutter pub get
 9. Wait for a few mins, until the app gets installed on your emulator
 10. Everything is set! You can try the project
 
-### Quick Look [Video]
-![Preview Vide](https://github.com/laksh29/seat_finder/assets/81346526/b37677cf-92b0-46ae-a379-cdc666e3e942)
+### Quick Look [Video Preview](https://drive.google.com/file/d/1JQoNeWNBxLfU5dZiIRkm2x5DcTv9KTHE/view?usp=sharing)
+![Preview Vide]([https://github.com/laksh29/seat_finder/assets/81346526/b37677cf-92b0-46ae-a379-cdc666e3e942](https://drive.google.com/file/d/1JQoNeWNBxLfU5dZiIRkm2x5DcTv9KTHE/view?usp=sharing)https://drive.google.com/file/d/1JQoNeWNBxLfU5dZiIRkm2x5DcTv9KTHE/view?usp=sharing)
 

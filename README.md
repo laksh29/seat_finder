@@ -15,7 +15,8 @@ This is a project to find your seat in Indian Railways. There are 6 major divisi
 5. Side Lower
 6. Emergency Seats
 
-Each seat has been denoted differently with seat numbers and seat type printed on the seat. You can even select your seat by tapping on it (it does nothing at the moment, is just a feature)
+Each seat has been denoted differently in the application with seat numbers and seat type printed on the seat. You can even select your seat by tapping on it (it does nothing at the moment, feature coming up soon)
+
 
 ### How to run the project:
 1. Have Flutter SDK installed on your local machine. [Get Started with Flutter - Documentation](https://docs.flutter.dev/get-started/install)
@@ -40,3 +41,5 @@ flutter pub get
 10. Everything is set! You can try the project
 
 ### Quick Look [Video]
+![Preview Vide](https://github.com/laksh29/seat_finder/assets/81346526/b37677cf-92b0-46ae-a379-cdc666e3e942)
+

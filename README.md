@@ -41,6 +41,5 @@ flutter pub get
 10. Everything is set! You can try the project
 
 ### Quick Look:
-[Video Preview](https://drive.google.com/file/d/1JQoNeWNBxLfU5dZiIRkm2x5DcTv9KTHE/view?usp=sharing)
-
+![Video Preview](https://drive.google.com/file/d/13oQYeBnndZcTL7PbHMMOZf4hU6mqTaOg/view?usp=sharing)
 

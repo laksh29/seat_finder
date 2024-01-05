@@ -21,10 +21,11 @@ Each seat has been denoted differently in the application with seat numbers and 
 ### How to run the project:
 1. Have Flutter SDK installed on your local machine. [Get Started with Flutter - Documentation](https://docs.flutter.dev/get-started/install)
 2. Have Git installed on your local machine. [Get started with Git - Documentation](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-3. Clone the repository on your local machine using the following command:
+3. Folk the repository by clicking on the folk button on top of the repository on Git Hub.
+4. Clone the repository on your local machine using the following command:
 
 ```
-git clone https://github.com/laksh29/seat_finder.git
+git clone <Folked Repo link>
 ```
 
 4. Open the repository on your Visual Studio Code (VS Code)
